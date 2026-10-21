@@ -181,6 +181,16 @@ and MLX. The examples below show how to run the model locally or
 launch an OpenAI-compatible server, using thinking mode and the
 recommended sampling settings above.
 
+The model repositories are gated. Request access once on the
+[Hugging Face model page](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+(approval is automatic; it covers every Raon-1 mini preview
+repository), then log in so the examples below can download them:
+
+```bash
+pip install -U huggingface_hub
+hf auth login
+```
+
 
 <summary><strong>Transformers</strong></summary>
 
@@ -241,8 +251,14 @@ outputs = model.generate(
     presence_penalty=1.5,
 )
 
-response = outputs[0][inputs["input_ids"].shape[-1]:]
-print(tokenizer.decode(response, skip_special_tokens=True))
+# The reasoning ends at </think>; the answer follows it.
+response = outputs[0][inputs["input_ids"].shape[-1]:].tolist()
+think_end = tokenizer.convert_tokens_to_ids("</think>")
+split = response.index(think_end) + 1 if think_end in response else 0
+reasoning = tokenizer.decode(response[:split], skip_special_tokens=True).strip()
+answer = tokenizer.decode(response[split:], skip_special_tokens=True).strip()
+print("Reasoning:\n" + reasoning)
+print("\nAnswer:\n" + answer)
 ```
 
 `presence_penalty` is applied by the model's remote code, since
@@ -279,7 +295,7 @@ vllm serve KRAFTON/Raon-1-mini-preview \
     --kv-cache-dtype fp8_e4m3 \
     --enable-prefix-caching \
     --spec-method dflash \
-    --spec-model KRAFTON/Raon-1-mini-preview-assistant \
+    --spec-model KRAFTON/Raon-1-mini-preview-dflash2 \
     --spec-tokens 7 \
     --reasoning-parser raon_1 \
     --enable-auto-tool-choice \
@@ -517,6 +533,7 @@ python -m mlx_lm server \
     --trust-remote-code \
     --host 127.0.0.1 \
     --port 8000 \
+    --max-tokens 32768 \
     --chat-template-args '{
       "enable_thinking": true,
       "truncate_history_thinking": false
@@ -562,6 +579,8 @@ For coding and math, set `presence_penalty` to `0`.
 ## Agentic Use
 
 Raon-1 mini preview can be used with agent harnesses such as [Hermes Agent](https://github.com/NousResearch/hermes-agent), [Pi](https://pi.dev), and [OpenCode](https://opencode.ai) through an OpenAI-compatible API. The examples below assume an endpoint at `http://localhost:8000/v1` with the model ID `Raon-1-mini-preview`. Adjust these settings to match your server, ensuring that tool calling and reasoning are properly supported.
+> [!NOTE]
+> With MLX, use `KRAFTON/Raon-1-mini-preview-mlx` as the model ID instead of `Raon-1-mini-preview`; `mlx_lm server` loads the model named in each request.
 
 ### Hermes Agent
 
