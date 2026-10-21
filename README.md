@@ -645,4 +645,18 @@ You can also try it in the [Raon-1 mini playground](https://raon-mini.krafton.ai
 
 ## License
 
-This model is released under the Apache License 2.0.
+### Hugging Face model card / README notice License - Apache 2.0
+
+The Raon model, including its model weights, configuration files, and other model components made available for download through this repository, is licensed under the Apache License, Version 2.0.  Subject to that license, you may download, use, modify, and redistribute the model and its weights, including for commercial purposes.
+
+Krafton and its licensors retain ownership of their respective intellectual property.  The Apache License grants the rights stated in that license and does not transfer ownership.  Rights in third-party materials remain subject to their applicable terms.
+
+The Apache License does not extend to Krafton’s proprietary training datasets, training methodologies, undistributed software, hosted API, playground, or other proprietary materials not included in this repository.
+
+### Hosted API and Playground Have Separate License Terms
+
+Krafton also makes Raon available through its hosted API and playground service (“RAON Service”). The Raon Service is not licensed under Apache 2.0.  Access to and use of the Raon Service is governed by separate Hosted Access Terms and Conditions that are provided before access to the service is granted.  The Hosted Access Terms and Conditions govern, among other things, permitted service use, suspension, termination, and Krafton’s right to charge fees in the future.
+
+### Beta Access
+
+To request free, limited private-beta access to the hosted API or playground, email raon.krafton.ai@krafton.com Krafton will send a link to the applicable Hosted Access Terms and Conditions by email.  You must accept those terms before Krafton issues a key for the hosted API or enables playground access.  Krafton may modify, suspend, or discontinue the Raon Service and may offer future access on paid or different terms.  No charges will apply unless you first agree to them.
