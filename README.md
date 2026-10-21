@@ -154,15 +154,15 @@ sampling = dict(temperature=1.0, top_p=0.95, top_k=20, presence_penalty=1.5, rep
 
 We release a [DFlash2](https://github.com/z-lab/dflash) draft model alongside Raon-1 mini preview to accelerate inference through speculative decoding. In our benchmarks on a single NVIDIA B300, it delivers **up to 2.18× higher output throughput** than autoregressive decoding. Speedups vary by hardware and workload.
 
-Throughput is measured in output tok/s, with speedup over autoregressive decoding in parentheses. Acceptance length (AL) is 1 + total accepted draft tokens divided by total draft steps, measured at concurrency 1.
+Throughput is measured in output tok/s, with speedup over autoregressive decoding in parentheses. Acceptance length (AL) is the mean number of tokens per verification step, averaged across requests at concurrency 1.
 
 | Benchmark | AL | AR · C=1 | DFlash2 · C=1 | AR · C=8 | DFlash2 · C=8 | AR · C=32 | DFlash2 · C=32 |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| GSM8K | 3.77 | 296.3 | **646.3 (2.18×)** | 1,110.4 | **1,836.3 (1.65×)** | 1,528.9 | **2,619.3 (1.71×)** |
-| MATH-500 | 3.58 | 308.0 | **666.6 (2.16×)** | 1,496.1 | **2,511.3 (1.68×)** | 3,082.5 | **5,166.9 (1.68×)** |
-| HumanEval | 3.26 | 305.4 | **607.9 (1.99×)** | 1,470.8 | **2,269.6 (1.54×)** | 2,793.1 | **4,596.4 (1.65×)** |
-| MBPP | 3.21 | 307.0 | **604.1 (1.97×)** | 1,450.6 | **2,197.2 (1.51×)** | 2,956.2 | **5,017.9 (1.70×)** |
-| MT-Bench | 2.97 | 304.9 | **570.2 (1.87×)** | 1,477.1 | **2,038.2 (1.38×)** | 2,521.3 | **3,935.4 (1.56×)** |
+| GSM8K | 4.76 | 296.3 | **646.3 (2.18×)** | 1,110.4 | **1,836.3 (1.65×)** | 1,528.9 | **2,619.3 (1.71×)** |
+| MATH-500 | 4.43 | 308.0 | **666.6 (2.16×)** | 1,496.1 | **2,511.3 (1.68×)** | 3,082.5 | **5,166.9 (1.68×)** |
+| HumanEval | 3.96 | 305.4 | **607.9 (1.99×)** | 1,470.8 | **2,269.6 (1.54×)** | 2,793.1 | **4,596.4 (1.65×)** |
+| MBPP | 3.85 | 307.0 | **604.1 (1.97×)** | 1,450.6 | **2,197.2 (1.51×)** | 2,956.2 | **5,017.9 (1.70×)** |
+| MT-Bench | 3.24 | 304.9 | **570.2 (1.87×)** | 1,477.1 | **2,038.2 (1.38×)** | 2,521.3 | **3,935.4 (1.56×)** |
 
 <small>
 AR: autoregressive decoding; C: concurrency.
