@@ -29,7 +29,7 @@ Raon-1 mini is a 30B-A4B Mixture-of-Experts (MoE) language model, designed and *
 
 - **Reasoning**: Built-in thinking, with leading results on the math and science benchmarks shown below.
 - **Instruction following and search**: Leads the comparison models on the instruction-following and search benchmarks shown below.
-- **Korean and English**: Strong Korean language ability, and solid performance in English.
+- **Multilingual capabilities**: Trained on Korean, English, Japanese, Chinese, Spanish, French, and Thai. Demonstrates strong Korean performance and solid English capabilities.
 - **Agent execution**: Tool calling for agentic workflows, with support for Hermes Agent, Pi and OpenCode.
 - **Speculative decoding support**: A DFlash2 draft model is provided for accelerated speculative decoding.
 - **Quantization options**: Available in MXFP8 and NVFP4 formats, with NVFP4 enabling inference on a single NVIDIA RTX 5090 gpu (32 GB VRAM).
