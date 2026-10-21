@@ -2,8 +2,8 @@
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/raon-1-mini-logo-dark.svg">
-    <img src="assets/raon-1-mini-logo.svg" alt="Raon-1 mini" width="400">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/raon-1-mini-logo-dark.png">
+    <img src="assets/raon-1-mini-logo.png" alt="Raon-1 mini" width="400">
   </picture>
 </div>
 
@@ -30,7 +30,10 @@ Raon-1 mini is a 30B-A4B Mixture-of-Experts (MoE) language model, designed and *
 - **Speculative decoding support**: A DFlash2 draft model is provided for accelerated speculative decoding.
 - **Quantization options**: Available in MXFP8 and NVFP4 formats, with NVFP4 enabling inference on a single NVIDIA RTX 5090 gpu (32 GB VRAM).
 
-![Raon-1 mini vs. open models](./assets/raon_benchmarks_top6.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/raon_benchmarks_top6-dark.png">
+  <img src="assets/raon_benchmarks_top6.png" alt="Raon-1 mini vs. open models">
+</picture>
 
 ## Model Overview
 
