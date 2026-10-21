@@ -19,7 +19,7 @@
 Raon-1 mini is a 30B-A4B Mixture-of-Experts (MoE) language model, designed and **trained from scratch** by [KRAFTON AI](https://krafton.ai/en/). It demonstrates **strong capabilities in Korean conversation and agentic tasks**. As part of the Raon open model family, it is released under the **Apache 2.0 license**.
 
 > [!TIP]
-> Want to try Raon-1 mini without setting anything up? Chat with it for free in the [Raon-1 mini playground](https://raon-mini.krafton.ai).
+> Want to try Raon-1 mini without setting anything up? Chat with it for free, for a limited time, in the [Raon-1 mini playground](https://raon-mini.krafton.ai).
 
 > [!NOTE]
 > This is a preview release, not a final model. Specs and results may change before the final version.
@@ -639,6 +639,8 @@ For all three agent harnesses, the configured context window and maximum output 
 ## Access
 
 Raon-1 mini preview is an open-weight model. Access is granted on request.
+
+You can also try it in the [Raon-1 mini playground](https://raon-mini.krafton.ai), free for a limited time.
 
 ## License
 
