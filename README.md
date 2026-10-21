@@ -192,6 +192,7 @@ hf auth login
 ```
 
 
+<details>
 <summary><strong>Transformers</strong></summary>
 
 Use Hugging Face Transformers to load Raon-1 mini and generate
@@ -266,12 +267,17 @@ Transformers has no built-in presence penalty.
 For coding and math, set `presence_penalty` to `0.0`.
 
 
+On a 32 GB GPU, use the base MXFP8 model with `device_map="auto"`
+and CPU offload.
+
+</details>
+
 <details>
 <summary><strong>vLLM (beta)</strong></summary>
 
 Use vLLM to serve Raon-1 mini through an OpenAI-compatible API
 with tool calling and DFlash2 speculative decoding.
-Tested on NVIDIA B300.
+Tested on NVIDIA B300. The RTX 5090 NVFP4 profile is documented below.
 
 Install from our fork and start the server:
 
@@ -312,6 +318,34 @@ To serve the NVFP4 checkpoint, replace the model with
 `KRAFTON/Raon-1-mini-preview-nvfp4` in the same command.
 It runs on a single GPU (tensor parallel size 1).
 
+
+### RTX 5090 (32 GB)
+
+Use the NVFP4 checkpoint with the following settings.
+CUDA Toolkit 13 with `nvcc` on `PATH` is required.
+
+```bash
+# WSL2
+export VLLM_WSL2_ENABLE_PIN_MEMORY=1
+
+vllm serve KRAFTON/Raon-1-mini-preview-nvfp4 \
+    --host 127.0.0.1 --port 8000 \
+    --served-model-name Raon-1-mini-preview \
+    --max-model-len 32768 \
+    --max-num-batched-tokens 2048 \
+    --max-num-seqs 8 \
+    --gpu-memory-utilization 0.85 \
+    --kv-cache-dtype fp8_e4m3 \
+    --kv-cache-memory 3221225472 \
+    --enable-prefix-caching --async-scheduling \
+    --spec-method dflash \
+    --spec-model KRAFTON/Raon-1-mini-preview-dflash2 \
+    --spec-tokens 7 \
+    --reasoning-parser raon_1 \
+    --enable-auto-tool-choice --tool-call-parser raon_1 \
+    --default-chat-template-kwargs '{"enable_thinking":true,"truncate_history_thinking":false}'
+```
+
 Send a request from another terminal:
 
 ```bash
@@ -325,7 +359,7 @@ curl http://localhost:8000/v1/chat/completions \
           "content": "Tell me about KRAFTON AI."
         }
       ],
-      "max_tokens": 32768,
+      "max_tokens": 8192,
       "temperature": 1.0,
       "top_p": 0.95,
       "top_k": 20,
