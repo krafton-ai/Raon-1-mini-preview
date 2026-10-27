@@ -9,18 +9,18 @@
 
 <p align="center">
   <a href="https://krafton.ai/en/"><img src="https://img.shields.io/badge/Homepage-KRAFTON%20AI-blue?style=flat&logo=google-chrome&logoColor=white" alt="Homepage"></a>
-  <br>
   <a href="https://huggingface.co/KRAFTON"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-KRAFTON-yellow?style=flat" alt="Hugging Face"></a>
-  <a href="https://x.com/Krafton_AI"><img src="https://img.shields.io/badge/X-KRAFTON%20AI-white?style=flat&logo=x&logoColor=black" alt="X"></a>
-  <br>
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-lightgrey?style=flat" alt="License"></a>
+  <br>
+  <a href="https://x.com/Krafton_AI"><img src="https://img.shields.io/badge/X-KRAFTON%20AI-white?style=flat&logo=x&logoColor=black" alt="X"></a>
+  <a href="https://discord.gg/sDG7mmZPnc"><img src="https://img.shields.io/badge/Discord-Community-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Community"></a>
 </p>
 
 Raon-1 mini is a 30B-A4B Mixture-of-Experts (MoE) language model, designed and **trained from scratch** by [KRAFTON AI](https://krafton.ai/en/). It demonstrates **strong capabilities in Korean conversation and agentic tasks**. As part of the Raon open model family, it is released under the **Apache 2.0 license**.
 
 > [!TIP]
 > Want to try Raon-1 mini without setting anything up?<br>
-> Chat with it for free, for a limited time, in the [Raon-1 mini playground](https://raon-mini.krafton.ai/en).
+> Chat with it for free, for a limited time, in the [Raon-1 mini playground](https://raon-console.krafton.ai/playground/guest).
 
 > [!NOTE]
 > This is a preview release, not a final model. Specs and results may change before the final version.
@@ -694,7 +694,7 @@ For all three agent harnesses, the configured context window and maximum output 
 
 Raon-1 mini preview is an open-weight model. Access is granted on request.
 
-You can also try it in the [Raon-1 mini playground](https://raon-mini.krafton.ai/en), free for a limited time.
+You can also try it in the [Raon-1 mini playground](https://raon-console.krafton.ai/playground/guest), free for a limited time.
 
 ## License
 
